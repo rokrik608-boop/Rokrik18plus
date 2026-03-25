@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blur to Clear Alert Image</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#111;
+    font-family:Arial, sans-serif;
+}
+
+/* Alert Box */
+.alert-box{
+    position:fixed;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    background:white;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 0 30px rgba(0,0,0,0.5);
+    text-align:center;
+    width:300px;
+}
+
+/* Image blur effect */
+.alert-img{
+    width:100%;
+    border-radius:10px;
+    filter:blur(20px);
+    transition:filter 2s ease;
+}
+
+.show-clear{
+    filter:blur(0px);
+}
+
+button{
+    margin-top:10px;
+    padding:8px 15px;
+    border:none;
+    background:black;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="alert-box" id="alertBox">
+    <h3>Warning Message</h3>
+    <img src="https://picsum.photos/400/300" class="alert-img" id="alertImage">
+    <br>
+    <button onclick="closeAlert()">OK</button>
+</div>
+
+<script>
+window.onload = function(){
+    setTimeout(()=>{
+        document.getElementById("alertImage").classList.add("show-clear");
+    },500); // blur to clear
+}
+
+function closeAlert(){
+    document.getElementById("alertBox").style.display="none";
+}
+</script>
+
+</body>
+</html>
